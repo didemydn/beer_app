@@ -1,14 +1,16 @@
 const express = require("express");
+const bcrypt = require('bcryptjs');
 const jwt = require("jsonwebtoken");
-const User = require("../models/User.model");
-
+const User = require("../models/User.model.js");
+const { isAuthenticated } = require("./../middleware/jwt.middleware.js");
 const router = express.Router();
 const saltRounds = 10;
 
-//POST /user/signup
-router.post('/signup', (req,res,next) => {
-    const { email, password, username } =req.body;
+console.log("Inside auth.routes.js");
 
+//POST /auth/signup
+router.post('/signup', (req,res, next) => {
+    const { email, password, username } =req.body;
 
 // Check if the email or password or name is provided as an empty string 
 if (email=== "" || password ==="" || username === "") {
@@ -47,7 +49,7 @@ if (!passwordRegex.test(password)) {
         // We return a pending promise, which allows us to chain another `then` 
         return User.create({email, password: hashedPassword, username});
     })
-    .then((createUser) => {
+    .then((createdUser) => {
         // Deconstruct the newly created user object to omit the password
         // We should never expose passwords publicly
         const {email, username, _id} = createdUser;
@@ -111,6 +113,9 @@ router.post("/login", (req,res,next) => {
 })
 
 //POST /user/verify
-
+router.get('/verify', isAuthenticated, (req,res,next) => {
+    console.log('req.payload', req.payload);
+    res.status(200).json(req.payload);
+})
 
 module.exports = router; 

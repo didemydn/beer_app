@@ -1,4 +1,7 @@
 // ℹ️ Gets access to environment variables/settings
+
+const { isAuthenticated } = require("./middleware/jwt.middleware");
+
 // https://www.npmjs.com/package/dotenv
 require("dotenv").config();
 
@@ -18,10 +21,10 @@ require("./config")(app);
 const indexRoutes = require("./routes/index.routes");
 app.use("/api", indexRoutes);
 
+const userRouter = require("./routes/auth.routes");
+app.use("/user", userRouter);
+
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);
-
-const authRouter = require("./routes/auth.routes");
-app.use("/auth", authRouter);
 
 module.exports = app;

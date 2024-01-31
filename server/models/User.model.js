@@ -21,6 +21,10 @@ const userSchema = new Schema(
     profileImage: {
       type: String,
     },
+    userType: {
+      type: String,
+      enum: ["admin", "regular"],
+    },
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`    

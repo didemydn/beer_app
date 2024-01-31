@@ -16,6 +16,10 @@ const beerSchema = new Schema(
       lowercase: true,
       trim: true
     },    
+    beerImage: {
+      type: String,
+      required: true
+    },
     abv: { 
       type: String, 
       required: true },      

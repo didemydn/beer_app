@@ -28,7 +28,7 @@ router.post("/create", fileUploader.single("beerImage"), (req, res) => {
 
 //get all beers
 
-router.get("/beers", isAuthenticated, (req,res) => {
+router.get("/all", (req,res) => {
     Beer.find()
       .then((beers) => {
         res.status(200).json(beers);
@@ -40,7 +40,7 @@ router.get("/beers", isAuthenticated, (req,res) => {
 })
 
 //get a single beer page 
-router.get("/beers/:beerId", isAuthenticated, async (req,res)=> {
+router.get("/all/:beerId", isAuthenticated, async (req,res)=> {
     try {
         const {beerId} = req.params;
         const {email} = req.payload;

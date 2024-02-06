@@ -22,7 +22,7 @@ const indexRoutes = require("./routes/index.routes");
 app.use("/api", indexRoutes);
 
 const beerRouter = require("./routes/beer.routes");
-app.use("/api", beerRouter);
+app.use("/beer", beerRouter);
 
 const userRouter = require("./routes/auth.routes");
 app.use("/user", userRouter);

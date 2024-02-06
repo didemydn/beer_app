@@ -1,18 +1,14 @@
 // routes/beer.routes.js
-
 const router = require("express").Router();
-
 // const mongoose = require("mongoose");
-
 const Beer = require("../models/Beer.model");
-
 const fileUploader = require("../config/cloudinary.config");
 const { isAuthenticated } = require("../middleware/jwt.middleware.js");
 const CommentRating = require("../models/CommentRating.model.js");
 
-//  POST /api/beers  -  Creates a new beer
+//  POST /beer/create  -  Creates a new beer
 router.post("/create", fileUploader.single("beerImage"), (req, res) => {
-  const { brand,name, type, abv, description } = req.body;
+  const { brand, name, abv, country, description } = req.body;
   const beerImage = req.file ? req.file.path : null;
   console.log("file is:", req.file);
 
@@ -20,7 +16,7 @@ router.post("/create", fileUploader.single("beerImage"), (req, res) => {
     return res.status(400).json({ error: "No photo uploaded!"});
   }
 
-  Beer.create({ brand,beerImage, name, type, abv, description })
+  Beer.create({ brand, beerImage, name, country, abv, description })
     .then((createdBeer) => {
         console.log("Beer created:", createdBeer);
     })

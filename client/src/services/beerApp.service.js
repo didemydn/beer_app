@@ -26,7 +26,7 @@ class BeerAppService{
 
     //GET /beers
     getAllBeers = async () => {
-        return this.api.get("/beers");
+        return this.api.get("/beer/all");
     }
 }
 

@@ -24,17 +24,18 @@ function CreateBeerPage() {
     const [abv, setAbv] = useState("");
     const [country, setCountry] = useState("");
     const [description, setDescription] = useState("");
-    const [image, setImage] = useState("");
+    const [image, setImage] = useState(null);
     const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
-            const formData = new formData ();
+            const formData = new FormData ();
             formData.append("brand", brand);
             formData.append("name", name);
             formData.append("abv", abv);
             formData.append("country", country);
             formData.append("description", description);
+            formData.append("beerImage", image);
 
             beerAppService
                 .createBeers(formData)
@@ -55,6 +56,7 @@ function CreateBeerPage() {
     return (
         <>
         <Container>
+            <Form onSubmit={handleSubmit}>
             <FormGroup>
                 <Label for="brand">Brand</Label>
                 <input
@@ -109,13 +111,13 @@ function CreateBeerPage() {
                 <Label for="image">Add Image</Label>
                 <input
                     type="file" 
-                    name="image"
+                    name="beerImage"
                     id="beer_image"
                     onChange={(e) => setImage(e.target.files[0])}
                 />      
             </FormGroup>
-            <Button className="button">Post</Button>
-
+            <Button className="button" type="submit">Post</Button>
+            </Form>
         </Container>
         </>
     )

@@ -1,0 +1,22 @@
+.AboutPage {
+    background-image: url('../../../public/beer-image.jpg');
+    background-size: cover;
+    background-position: center;
+    color: black;
+    padding: 50px; 
+}
+
+.AboutSection {
+    margin-bottom: 30px; 
+    background-color:rgba(255, 255, 255, 0.3);
+}
+
+.AboutSection h2 {
+    font-size: 24px; 
+    margin-bottom: 10px; 
+}
+
+.AboutSection p {
+    font-size: 18px; 
+    line-height: 1.5; 
+}

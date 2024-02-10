@@ -1,12 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
 import { Routes, Route } from "react-router-dom";
-import HomePage from "./pages/HomePage"
+import HomePage from "./pages/HomePage/HomePage"
 import CreateBeerPage from "./pages/CreateBeerPage"
 import AllBeers from './pages/AllBeers';
 import Navbar from './components/Navbar';
 import Signup from './pages/SignupPage/Signup';
 import Login from './pages/LoginPage/login';
+import About from './pages/AboutPage/About';
 import { AuthProviderWrapper } from './context/auth.context';
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <Route path='/beer/all' element={ <AllBeers/>} />
         <Route path='/user/signup' element={ <Signup/>}/>
         <Route path='/user/login' element={ <Login/>}/>
+        <Route path='/about' element={ <About/>}/>
       </Routes>    
       </AuthProviderWrapper>
     </div>

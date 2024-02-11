@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import beerAppService from "../services/beerApp.service";
+import Mylist from "./MyListPage/MyList";
 
 function AllBeers(){
     const [beers, setBeers] = useState([]);

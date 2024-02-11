@@ -42,7 +42,7 @@ function Login() {
             .then(response => {
                 storeToken(response.data.authToken)
                 authenticateUser()
-                navigate("/")
+                navigate("/mylist")
             })
             .catch(error => {
                 setErrorMessage(true)

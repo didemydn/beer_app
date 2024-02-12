@@ -1,20 +1,12 @@
-import { useState, useContext, useEffect, useSyncExternalStore } from "react";
+import { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import authService from "../../services/auth.service";
 import { AuthContext } from "../../context/auth.context";
 import {
   Button,
-  Card,
-  CardHeader,
-  CardBody,
   FormGroup,
   Form,
-  Input,
-  InputGroupAddon,
-  InputGroupText,
-  InputGroup,
-  Row,
-  Col,
+  Input,  
 } from "reactstrap";
 
 function Login() {
@@ -36,13 +28,16 @@ function Login() {
     
     const handleLoginSubmit = (e) => {
         e.preventDefault();
+        console.log("Login button clicked!");
         const requestBody = {email, password};
 
         authService.login(requestBody)
             .then(response => {
+                console.log("Login successful!");
                 storeToken(response.data.authToken)
-                authenticateUser()
-                navigate("/mylist")
+                authenticateUser();
+                console.log("Navigating to /mylist...");
+                navigate("/mylist");
             })
             .catch(error => {
                 setErrorMessage(true)

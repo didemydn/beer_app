@@ -28,6 +28,11 @@ class BeerAppService{
     getAllBeers = async () => {
         return this.api.get("/beer/all");
     }
+
+    // GET/beers/search
+    searchBeers = async (query) => {
+        return this.api.get(`beer/search?q=${query}`);
+    }
 }
 
 const beerAppService = new BeerAppService();

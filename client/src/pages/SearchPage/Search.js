@@ -2,41 +2,41 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import beerAppService from "../../services/beerApp.service";
 
-function Search(e) {
-    const [input, setInput] = useState('');
-    const [searchResults, setSearchResults] = useState([]);
+function Search() {
+    const [search, setSearch] = useState("");
+    const [data, setData] = useState([]);
     const [selectedBeers, setSelectedBeers] = useState(null);
 
-    useEffect(()=>{
-        if (input.trim() !== '') {
-        beerAppService.getAllBeers(input)
-            .then((response) => {
-                setSearchResults(response.data);
+    useEffect(()=>{    
+        if (search.trim() !== "") {    
+            beerAppService.searchBeers(search)
+            .then(res => {
+                setData(res.data);
             })
             .catch((error) => {
                 console.log("Error searching beers:", error)
             });
-        } else {
-            setSearchResults([]);
+        } else if (search.trim() === "") {
+            // Keep previous search results until a new search is initiated
+            // This ensures smoother user experience
+            return;
         }
-    }, [input]);
+     }, [search]);
 
-    const handleInputChange = (e) => {
-        setInput(e.target.value);
+    const filter = (e) => {
+        setSearch(e.target.value.toLowerCase());
     }
 
     const handleAddToList = (beer) => {
-        setSelectedBeers(beer);     
-         
-        } 
+        setSelectedBeers(beer);              
+    } 
     
-
     return(
         <div>
             <h2>Search beers and rate</h2>
-            <input type="text" placeholder="Search for beers" value={input} onChange={handleInputChange}/>
+            <input type="text" placeholder="Search for beers" value={search} onChange={filter}/>
             <ul>
-                {searchResults.map((beer, index) => (
+                {data.map((beer, index) => (
                     <li key={index}>
                         {beer.name} 
                         <button onClick={() => handleAddToList(beer)}>Add to List</button>

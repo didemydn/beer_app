@@ -25,7 +25,7 @@ function App() {
         <Route path='/user/login' element={ <Login/>}/>
         <Route path='/about' element={ <About/>}/>
         <Route path='/mylist' element={ <Mylist/>}/>
-        <Route path='/search' element={ <Search/>}/>
+        <Route path='/beer/search' element={ <Search/>}/>
       </Routes>    
       </AuthProviderWrapper>
     </div>

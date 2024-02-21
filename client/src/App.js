@@ -9,7 +9,6 @@ import Signup from './pages/SignupPage/Signup';
 import Login from './pages/LoginPage/login';
 import About from './pages/AboutPage/About';
 import Mylist from './pages/MyListPage/MyList';
-import Search from './pages/SearchPage/Search';
 import { AuthProviderWrapper } from './context/auth.context';
 
 function App() {
@@ -25,7 +24,6 @@ function App() {
         <Route path='/user/login' element={ <Login/>}/>
         <Route path='/about' element={ <About/>}/>
         <Route path='/mylist' element={ <Mylist/>}/>
-        <Route path='/beer/search' element={ <Search/>}/>
       </Routes>    
       </AuthProviderWrapper>
     </div>

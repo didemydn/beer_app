@@ -30,9 +30,9 @@ class BeerAppService{
     }
 
     // GET/beers/search
-    searchBeers = async (query) => {
-        return this.api.get(`beer/search?q=${query}`);
-    }
+    //searchBeers = async (query) => {
+    //    return this.api.get(`beer/search?q=${query}`);
+    //}
 }
 
 const beerAppService = new BeerAppService();

@@ -1,5 +1,6 @@
 import { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import authService from "../../services/auth.service";
 import { AuthContext } from "../../context/auth.context";
 import {
@@ -33,15 +34,21 @@ function Login() {
 
         authService.login(requestBody)
             .then(response => {
+                console.log("Login response:", response); // Log the response
+                if (response && response.data && response.data.authToken) {           
                 console.log("Login successful!");
                 storeToken(response.data.authToken)
-                authenticateUser();
                 console.log("Navigating to /mylist...");
-                navigate("/mylist");
+                navigate("/mylist");              
+                } else {
+                    console.error("Login failed: Invalid response received");
+                    setErrorMessage("Invalid response received from server");
+                }
             })
             .catch(error => {
-                setErrorMessage(true)
-            })
+                console.error("Login failed:", error.response ? error.response.data.message : error.message)
+                setErrorMessage(error.response ? error.response.data.message: "")
+    })
     };
 
     return (

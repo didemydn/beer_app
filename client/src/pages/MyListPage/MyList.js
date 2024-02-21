@@ -1,13 +1,14 @@
 import React, { useContext, useState, useEffect } from "react";
+import { Navigate } from "react-router-dom";
 import { AuthContext } from "../../context/auth.context";
 import Search from "../../components/Search"
 
 function Mylist(){
     const [beers, setBeers] = useState([]);
     const { authenticateUser} = useContext(AuthContext);
-    //if (!authenticateUser) {
-    //    return <Navigate to="/user/login" />;
-    //}
+    if (!authenticateUser) {
+        return <Navigate to="/user/login" />;
+    }
     
     return(
         <div>

@@ -27,6 +27,9 @@ app.use("/beer", beerRouter);
 const userRouter = require("./routes/auth.routes");
 app.use("/user", userRouter);
 
+const profileRouter = require("./routes/profile.routes");
+app.use("/profile", profileRouter);
+
 //const profileRouter = require("./routes/profile.routes");
 //app.use("/profile", profileRouter);
 

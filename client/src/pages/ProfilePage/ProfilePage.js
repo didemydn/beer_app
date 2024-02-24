@@ -11,7 +11,7 @@ const Profile = () => {
     
     return (
         <div>
-            <h1>Hello</h1>
+            <h1>Hello {user.name}!</h1>
             <Mylist/>
         </div>
     )

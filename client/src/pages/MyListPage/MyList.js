@@ -21,7 +21,7 @@ function Mylist(){
                 : (
                     <ul>
                         {beers.map((beer, index)=> (
-                            <li key={index}>{beer.name}</li>
+                            <li key={index}>{beer.name}</li>                            
                         ))}
                     </ul>
                 )}    

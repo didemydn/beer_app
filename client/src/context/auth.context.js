@@ -27,6 +27,7 @@ function AuthProviderWrapper(props) {
     // Fetch user data from the backend using the authentication token
     axios.get(`${API_URL}/user`)
       .then(response => {
+        console.log("User Data:", response.data);
         setUser(response.data);
         setIsLoading(false);
       })

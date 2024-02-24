@@ -5,10 +5,10 @@ import Search from "../../components/Search"
 
 function Mylist(){
     const [beers, setBeers] = useState([]);
-    const { authenticateUser} = useContext(AuthContext);
-    if (!authenticateUser) {
-        return <Navigate to="/user/login" />;
-    }
+    // const { authenticateUser} = useContext(AuthContext);
+    // if (!authenticateUser) {
+    //     return <Navigate to="/user/login" />;
+    // }
     
     return(
         <div>

@@ -38,8 +38,8 @@ function Login() {
                 if (response && response.data && response.data.authToken) {           
                 console.log("Login successful!");
                 storeToken(response.data.authToken)
-                console.log("Navigating to /mylist...");
-                navigate("/mylist");              
+                console.log("Navigating to /profile...");
+                navigate("/profile");              
                 } else {
                     console.error("Login failed: Invalid response received");
                     setErrorMessage("Invalid response received from server");

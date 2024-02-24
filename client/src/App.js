@@ -10,6 +10,7 @@ import Login from './pages/LoginPage/login';
 import About from './pages/AboutPage/About';
 import Mylist from './pages/MyListPage/MyList';
 import Profile from './pages/ProfilePage/ProfilePage';
+import SingleBeer from './pages/SingleBeerPage/SingleBeer';
 import { AuthProviderWrapper } from './context/auth.context';
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
         <Route path='/about' element={ <About/>}/>
         <Route path='/mylist' element={ <Mylist/>}/>
         <Route path='/profile' element={ <Profile/>}/>
+        <Route path='/beer/all/:beerId' element={ <SingleBeer/>}/>
       </Routes>    
       </AuthProviderWrapper>
     </div>

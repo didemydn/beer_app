@@ -22,7 +22,7 @@ function AllBeers(){
             {beers.map((beer) => {
                 return (
                     <div key={beer._id}>
-                        <Link to={`/beer/${beer._id}`}>
+                        <Link to={`/beer/all/${beer._id}`}>
                             <h3>{beer.name}</h3>
                         </Link>
                         </div>

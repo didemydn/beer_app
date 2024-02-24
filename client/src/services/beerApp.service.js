@@ -29,6 +29,11 @@ class BeerAppService{
         return this.api.get("/beer/all");
     }
 
+    // GET one beer
+    getSingleBeer = async (beerId) => {
+    return this.api.get(`/beer/all/${beerId}`);
+  };
+
     // GET/beers/search
     //searchBeers = async (query) => {
     //    return this.api.get(`beer/search?q=${query}`);

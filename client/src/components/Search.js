@@ -35,7 +35,7 @@ function Search({ setBeers }) {
     
     return(
         <div>
-            <h2>Search beers and rate</h2>
+            <h3>Search beers and rate</h3>
             <input type="text" placeholder="Search for beers" value={search} onChange={filter}/>
             <ul>
                 {data.map((beer, index) => (

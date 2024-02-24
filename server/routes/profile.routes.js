@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken");
 const { isAuthenticated } = require("../middleware/jwt.middleware");
 
 router.post(
-    "upload/:id",fileUploader.single("profileImage"),
+    "/upload/:id",fileUploader.single("profileImage"),
     (req,res,next) => {
         console.log("file is:", req.file);
         if(!req.file) {
@@ -16,7 +16,7 @@ router.post(
     }
 )
 
-router.put("edit/:id", (req, res) => {
+router.put("/edit/:id", (req, res) => {
     const userId = req.params.id;
     const { name, password, profileImage } = req.body;
 

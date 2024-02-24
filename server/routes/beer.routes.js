@@ -4,7 +4,6 @@ const router = require("express").Router();
 const Beer = require("../models/Beer.model");
 const fileUploader = require("../config/cloudinary.config");
 const { isAuthenticated } = require("../middleware/jwt.middleware.js");
-const CommentRating = require("../models/CommentRating.model.js");
 
 //  POST /beer/create  -  Creates a new beer
 router.post("/create", fileUploader.single("beerImage"), (req, res) => {
@@ -49,24 +48,6 @@ router.get("/all/:beerId", isAuthenticated, async (req,res)=> {
         if (!singleBeer) {
             res.status(404).json({ message: "Beer not found"});
         }
-
-        const commentsAndRating = await CommentRating.find( {beer: beerId})
-        .populate("user", ["name", "email"]);
-
-        let averageRating = 0;
-        let isUserRatedAndCommented = false;
-
-        if (commentsAndRating.length > 0) {
-            let totalRating = 0 
-            commentsAndRating.forEach(commentsAndRating => {
-                totalRating += commentsAndRating.rating
-                if(commentsAndRating.user.email === email) {
-                    isUserRatedAndCommented = true
-                }
-            })
-            averageRating = totalRating / commentsAndRatings.length;   
-        }
-        res.status(200).json({singleBeer, commentsAndRatings, averageRating, isUserRatedAndCommented});
     }
     catch (error) {
         console.log(error);

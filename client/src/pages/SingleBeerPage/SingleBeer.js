@@ -4,7 +4,7 @@ import { Card, CardBody, CardHeader, Col, Container, Row } from "reactstrap";
 import beerAppService from "../../services/beerApp.service";
 
 function SingleBeer() {
-    const [beer, setBeer] = useState([]);
+    const [beer, setBeer] = useState({});
     const {beerId}=useParams();
 
     useEffect(()=>{
@@ -15,39 +15,44 @@ function SingleBeer() {
                 setBeer(res.data);                
             })
             .catch((err) => {
-
+                console.error("Error fetching beer:", err);
             })
     }, [beerId]);
 
+    console.log("beer state after effect:", beer);
+
     if (!beer) {
+        console.log("Beer data not loaded yet");
+
         return <div>Loading...</div>;
     }
 
+    console.log("Beer data loaded:", beer);
+
     return(
-        <Container>
-            {beer.map((singleBeer, index) =>(
-                <div key={index}>
-                <h1>{singleBeer.name}</h1>
+        <Container>            
+                <div>
+                <h1>{beer.name}</h1>
             
             <Card>
                 <div>
                     <img 
                     width={250}
                     height={250}
-                    src={singleBeer.beerImage}
-                    alt={singleBeer.name}
+                    src={beer.beerImage}
+                    alt={beer.name}
                     />
                 </div>
                 <div>
-                    Brand: {singleBeer.brand}
+                    Brand: {beer.brand}
                 </div>
                 <div>
                     Description
-                    <p>{singleBeer.description}</p>
+                    <p>{beer.description}</p>
                 </div>
             </Card>
             </div>    
-            ))}        
+                    
         </Container>
     )
 }
